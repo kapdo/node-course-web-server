@@ -9,6 +9,7 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
 app.use((req, res, next) => {
+    console.log('I m hit');
     var now = new Date().toString();
     var log = `${now} : ${req.method}  ${req.url}`;
     console.log(log);
@@ -41,6 +42,13 @@ app.get('/about', (req, res) => {
         pageTitle: 'About Super Page handle bar',
         currentYear: new Date().getFullYear()
     });
+});
+
+app.get('/projects',(req, res) =>{
+    res.render('projects.hbs', {
+        pageTitle:'PROJECTS'
+    });
+
 });
 
 app.get('/', (req, res) => {
